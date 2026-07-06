@@ -392,6 +392,51 @@ src/main/java/controller/LoginUI.java
 Run As > Java Application
 ```
 
+## 📦 打包與執行 JAR
+
+本專案為 Java Swing 桌面應用程式，並且需要連接 MySQL 資料庫，因此執行 JAR 前請先確認：
+
+* 已安裝 Java
+* 已啟動 MySQL Server
+* 已建立 `petcare` 資料庫
+* 已執行 `sql/mysql.sql`
+* `DbConnection.java` 中的資料庫帳號與密碼正確
+
+### 使用 Maven 打包
+
+在專案根目錄執行：
+
+```bash
+mvn clean package
+```
+
+打包完成後，JAR 檔會產生在：
+
+```text
+target/PetCare-0.0.1-SNAPSHOT.jar
+```
+
+### 使用指令執行 JAR
+
+建議使用終端機或 CMD 執行，方便查看錯誤訊息：
+
+```bash
+java -jar target/PetCare-0.0.1-SNAPSHOT.jar
+```
+
+### 常見 JAR 執行問題
+
+| 錯誤訊息                                               | 可能原因                      |
+| -------------------------------------------------- | ------------------------- |
+| `no main manifest attribute`                       | JAR 沒有設定 Main-Class       |
+| `ClassNotFoundException: com.mysql.cj.jdbc.Driver` | MySQL Connector 沒有被包進 JAR |
+| `Unknown database 'petcare'`                       | 尚未建立 `petcare` 資料庫        |
+| `Access denied for user 'root'@'localhost'`        | MySQL 帳號或密碼錯誤             |
+| `UnsupportedClassVersionError`                     | Java 編譯版本與執行版本不一致         |
+
+如果直接點兩下 JAR 沒有反應，通常是程式發生錯誤但視窗直接關閉，因此建議使用 `java -jar` 指令執行來查看錯誤原因。
+
+
 ---
 
 ## 🧪 測試帳號
@@ -421,30 +466,6 @@ flowchart TD
     E --> L[緊急醫療卡]
 ```
 
----
-
-## 📸 畫面截圖
-
-> 可將截圖放在 `docs/images` 資料夾，再取消下方註解放到 README 中。
-
-```markdown
-## 系統畫面
-
-### 登入頁
-![登入頁](docs/images/login.png)
-
-### 我的寵物
-![我的寵物](docs/images/pet-home.png)
-
-### 體重分析
-![體重分析](docs/images/weight-chart.png)
-
-### 緊急醫療卡
-![緊急醫療卡](docs/images/emergency-card.png)
-
-### 管理後台
-![管理後台](docs/images/admin-dashboard.png)
-```
 
 ---
 
