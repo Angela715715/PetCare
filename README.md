@@ -686,26 +686,6 @@ src/main/resources/images
 
 ---
 
-## 📌 GitHub 上傳建議
-
-建議不要上傳 Maven 編譯後的 `target` 資料夾，可新增 `.gitignore`：
-
-```gitignore
-target/
-*.class
-.DS_Store
-```
-
-如果不想上傳 Eclipse 設定檔，也可以加入：
-
-```gitignore
-.classpath
-.project
-.settings/
-```
-
----
-
 ## 👩‍💻 作者
 
 **Angela**
